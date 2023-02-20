@@ -245,7 +245,7 @@
 //   .then((res) => console.log(res.size))
 //   .catch((err) => console.log(err));
 
-const fs = require("fs");
+const fs = require("fs").promises;
 const path = require("path");
 const os = require("os");
 const util = require("util");
@@ -257,6 +257,9 @@ const { rejects } = require("assert");
 const htpp = require("http");
 const url = require("url");
 const lodash = require("lodash");
+const { reject } = require("lodash");
+const { readFile, writeFile } = require("fs");
+const eventEmiter = require("events");
 
 // const server = htpp.Server();
 // const port = process.env.port || 3000;
@@ -330,19 +333,70 @@ const lodash = require("lodash");
 //   );
 // });
 
-const server = htpp.createServer((req, res) => {
-  if (req.url === "/") {
-    res.end("helllo home");
-  }
-  if (req.url === "/about") {
-    res.end("hello about");
-  }
-  res.end(
-    "<h1>Oops!</h1> <p1>we can find your way!</p1> <a href = '/' >back hom! </a>"
-  );
-});
-server.listen(5000);
+// const server = htpp.createServer((req, res) => {
+//   if (req.url === "/") {
+//     res.end("helllo home");
+//   }
+//   if (req.url === "/about") {
+//     res.end("hello about");
+//   }
+//   res.end(
+//     "<h1>Oops!</h1> <p1>we can find your way!</p1> <a href = '/' >back hom! </a>"
+//   );
+// });
+// server.listen(5000);
 
-const array = [1, [2, [3, [4, [5, [7, [9]]]]]]];
-const loArr = lodash.flattenDeep(array);
-console.log(loArr);
+// const array = [1, [2, [3, [4, [5, [7, [9]]]]]]];
+// const loArr = lodash.flattenDeep(array);
+// console.log(loArr);
+
+// fs.readFile(path.join(__dirname, "considerTask.js"), "utf-8", (err, res) => {
+//   if (err) {
+//     console.log(err);
+//   }
+//   console.log(res);
+// });
+
+// const getText = (fileP) => {
+//   return new Promise((resolve, reject) => {
+//     fs.readFile(fileP, "utf-8", (err, data) => {
+//       if (err) {
+//         reject(err);
+//       }
+//       resolve(data);
+//     });
+//   });
+// };
+// getText(path.join(__dirname, "salam.txt"))
+//   .then((res) => console.log(res))
+//   .catch((err) => console.log(err));
+
+// const start = async () => {
+//   try {
+//     const first = await getText(path.join(__dirname, "salam.txt"));
+//     console.log(first);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+// start();
+
+// const readFilePromisy = util.promisify(fs.readFile);
+// const writeFilePromisy = util.promisify(fs.writeFile);
+
+// const start = async () => {
+//   try {
+//     const first = await fs.readFile(path.join(__dirname, "salam.txt"), "utf-8");
+//     await fs.writeFile(path.join(__dirname, "all.txt"), `amirReza ${first}`, {
+//       flag: "a",
+//     });
+//     console.log(first);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+// start();
+
+const costumEmiter = new eventEmiter();
+costumEmiter.on("response", () => console.log("byu rezaamir"));
+costumEmiter.emit("response");
