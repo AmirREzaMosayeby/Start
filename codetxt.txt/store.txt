@@ -1,0 +1,11 @@
+const { product, user } = require("./model");
+const assert = require("assert");
+
+const AllOfThem = [
+  new product("shirt", 10, "lebas"),
+  new product("car", 2, "mashin"),
+];
+
+console.log(AllOfThem);
+
+console.log(assert.deepEqual(true, [1]));

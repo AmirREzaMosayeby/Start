@@ -1,0 +1,54 @@
+const { allowedNodeEnvironmentFlags } = require("process");
+
+class product {
+  constructor(name, price, category) {
+    this.namep = [];
+    this.price = [];
+    this.category = [];
+  }
+
+  // Name(name) {
+  //   this.namep.push(name);
+  // }
+
+  // price(pri) {
+  //   this.price.push(pri);
+  // }
+
+  // category(cat) {
+  //   this.category.push(cat);
+  // }
+}
+
+class user extends product {
+  constructor(name) {
+    super(namep, price, category);
+    this.name = name;
+    this.comments = [];
+  }
+
+  // sddComment(c) {
+  //   this.comments.push(c);
+  // }
+
+  // getComment() {
+  //   return this.comments;
+  // }
+
+  addProduct(namep, price, category) {
+    this.namep.push(namep);
+    this.price.push(price);
+    this.category.push(category);
+  }
+
+  getProduct() {
+    return this.namep, this.price, this.category;
+  }
+}
+
+module.exports = {
+  product,
+  user,
+};
+
+const user = new user();
